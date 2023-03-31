@@ -1,4 +1,6 @@
+using Microsoft.Extensions.FileProviders;
 using Newtonsoft.Json.Serialization;
+using System.IO;
 
 var MyAllowOrigin = "_AllowOrigin";
 
@@ -48,6 +50,13 @@ app.UseCors(MyAllowOrigin);
 
 
 app.UseAuthorization();
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "Photos")),
+    RequestPath="/Photos"
+});
 
 app.MapControllers();
 
