@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Switch, NavLink } from 'react-router-dom';
 
 function App() {
     return (
+        <BrowserRouter>
         <div className="App container">
             <h3 className="d-flex justify-content-center m-3">
                 React JS FrontEnd
@@ -27,8 +28,16 @@ function App() {
                     </li>
                 </ul>
             </nav>
-        </div >
+
+            <Switch>
+                <Route path='/home' component={Home} />
+                <Route path='/department' component={Department} />
+                <Route path='/employee' component={Employee} />
+            </Switch>
+            </div >
+        </BrowserRouter>
     );
+
 }
 
 export default App;
